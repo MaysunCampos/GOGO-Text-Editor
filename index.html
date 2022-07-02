@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="html">
+    <head>
+        <title>GOGO Text Editor</title>
+        <link rel="stylesheet"  href="style.css">
+        <link rel="icon" href="gogo.png">
+    </head>
+    <body>
+        <main>
+           <div align="center">
+            <div class="editor">
+                <textarea id="html-code" spellcheck="false" value="html"></textarea>
+                <textarea id="css-code" spellcheck="false" value="css"></textarea>
+                <textarea id="js-code" spellcheck="false" value="js"></textarea>
+                <br/>
+                <iframe id="output"></iframe>
+                <br/><br/>
+                A <a href="http://maysuncampos.ueuo.com" target="_blank">Maysun Campos</a> Production
+                <br/>
+                Copyright <a href="http://looncadets.6te.net" target="_blank">LoonCadets</a> All Rights Reserved
+               </div>
+           </div>
+           <script>
+               function run() {
+               let htmlCode = document.querySelector(".editor #html-code").value;
+               let cssCode = "<style>"+document.querySelector(".editor #css-code").value+"</style>";
+               let jsCode = document.querySelector(".editor #js-code").value;
+               let output = document.querySelector(".editor #output");
+               output.contentDocument.body.innerHTML = htmlCode+cssCode;
+               output.contentWindow.eval(jsCode);
+               }
+               document.querySelector(".editor #html-code").addEventListener("keyup",run);
+               document.querySelector(".editor #css-code").addEventListener("keyup",run);
+               document.querySelector(".editor #js-code").addEventListener("keyup",run);
+           </script>
+        </main>
+    </body>
+</html>
